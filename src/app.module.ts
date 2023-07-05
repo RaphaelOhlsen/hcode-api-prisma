@@ -20,11 +20,11 @@ import { UserModule } from './user/user.module';
     MailerModule.forRoot({
       // transport: 'smtps://raphael@mocad.dev:gqt123252@smtpout.secureserver.net',
       transport: {
-        host: 'smtpout.secureserver.net',
-        port: 465,
+        host: process.env.MAIL_HOST,
+        port: Number(process.env.MAIL_PORT) || 587,
         auth: {
-          user: 'raphael@mocad.dev',
-          pass: 'gqt123252',
+          user: process.env.MAIL_USER,
+          pass: process.env.MAIL_PASSWORD,
         },
       },
       defaults: {
